@@ -1,9 +1,10 @@
 define(function(require, exports, module) {
 	require('jquery');
 	
-	function Scenic() {
+	function Scenic() {//alert(OAuth);
 		this.bindEvents();
 		this.getScenics();
+		//OAuth.initialize("d6KTI68U5RTMVkXkXxddxmZyVds");
 	}
 	
 	module.exports = Scenic;
@@ -17,7 +18,7 @@ define(function(require, exports, module) {
 	}
 	
 	Scenic.prototype.buy = function() {
-		//
+		//OAuth.initialize()
 	}
 	
 	Scenic.prototype.getScenics = function() {
@@ -39,7 +40,7 @@ define(function(require, exports, module) {
 				}
 				
 				$('.buy').click(function(data){
-					alert($(this).data('id'));
+					location.href = "JigsawPuzzle.html";
 				});
 			} else {
 				navigator.notification.alert(data.msg);

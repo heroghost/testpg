@@ -16,109 +16,58 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-        
-        
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-        document.addEventListener("online", function() {
-        	alert("I am online");
-        }, false);
-        document.addEventListener("offline", function() {
-        	alert("I am offline");
-        }, false);
-        /*
-        navigator.device.capture.captureAudio(
-		    function(mediaFiles) {
-			    var i, path, len;
-			    for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-			        path = mediaFiles[i].fullPath;
-			        // do something interesting with the file
-			    }
-			} ,function(error) {
-			    navigator.notification.alert('Error code: ' + error.code, null, 'Capture Error');
-			}, {limit:2}
-		);
-        window.addEventListener("batterystatus", function(info) {
-        	alert("level: "+info.level+" isPlugged: "+info.isPlugged);
-        }, false);
-        var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
-        
-        navigator.accelerometer.getCurrentAcceleration(function(acceleration){
-        	alert('Acceleration X: ' + acceleration.x + '\n' +
-	          'Acceleration Y: ' + acceleration.y + '\n' +
-	          'Acceleration Z: ' + acceleration.z + '\n' +
-	          'Timestamp: '      + acceleration.timestamp + '\n');
-        },function(){
-        	alert("error");
-        });
-        navigator.compass.getCurrentHeading(function(heading) {
-		    alert('Heading: ' + heading.magneticHeading);
-		}, function onError(error) {
-		    alert('CompassError: ' + error.code);
+
+define(function(require, exports, module){
+	require('jquery');
+	function App() {
+		//
+	}
+	module.exports = App;
+	
+	App.prototype.initialize = function() {
+		this.bindEvents();
+	}
+	
+	App.prototype.bindEvents = function() {
+		//alert(1);
+		//document.addEventListener('deviceready', this.onDeviceReady(this), false);
+		
+		$('.btn_login').bind('click',function(){
+			$.post("http://v2test.jingqubao.com/api_v3/Oauth/login_with_password",
+			{phone:$('.txt_uname').val(),
+			password:$('.txt_password').val()},
+			function(data){
+				data = $.parseJSON(data);
+				if(data.status == 1) {
+					location.href = 'scenics.html';
+				} else {
+					//navigator.vibrate(1000);
+					navigator.notification.alert(data.msg, function(){},"登录 提示");
+				}
+			});
 		});
-		navigator.notification.alert("I am a alert notification",function(){
-			alert("finished a alert");
-		},'alert title', "alert button");
-		navigator.geolocation.getCurrentPosition(function(position) {
-		    alert('Latitude: '          + position.coords.latitude          + '\n' +
-		          'Longitude: '         + position.coords.longitude         + '\n' +
-		          'Altitude: '          + position.coords.altitude          + '\n' +
-		          'Accuracy: '          + position.coords.accuracy          + '\n' +
-		          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-		          'Heading: '           + position.coords.heading           + '\n' +
-		          'Speed: '             + position.coords.speed             + '\n' +
-		          'Timestamp: '         + position.timestamp                + '\n');
-		},function(error) {
-		    alert('code: '    + error.code    + '\n' +
-		          'message: ' + error.message + '\n');
-		},{ 
-			maximumAge: 3000, 
-			timeout: 5000, 
-			enableHighAccuracy: true });
-		*/
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+	}
+	
+	App.prototype.receivedEvent = function(id) {
+		//var parentElement = document.getElementById(id);
+        //var listeningElement = parentElement.querySelector('.listening');
+        //var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+        //listeningElement.setAttribute('style', 'display:none;');
+        //receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        //console.log('Received Event: ' + id);
         
-        document.getElementsByClassName('received')[0].addEventListener('click', function(){
-        	navigator.camera.getPicture(function(imageData) {
-		    	alert('success pic');
-		    }, function(message) {
-		    	alert(message);
-		    }, {
-	            quality:50,
-	            allowEdit:true,
-	        });
-        }, false);
-    },
-    onSuccess:function(imageData) {
-    	alert('success pic');
-    },
-    onFail:function(message) {
-    	alert(message);
-    },
-};
+        //document.getElementsByClassName('received')[0].addEventListener('click', function(){
+        //	navigator.vibrate(3000);
+        //}, false);
+	}
+	
+	App.prototype.onDeviceReady = function(that) {
+		that.receivedEvent('deviceready');
+	}
+	
+	//window['app'] = new App();
+	//alert(window['app']);
+});
+

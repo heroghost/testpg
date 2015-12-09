@@ -455,6 +455,14 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
+    },
+    {
+        "file": "plugins/com.oauthio.plugins.oauthio/www/dist/oauth.js",
+        "id": "com.oauthio.plugins.oauthio.OAuth",
+        "pluginId": "com.oauthio.plugins.oauthio",
+        "merges": [
+            "OAuth"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -475,7 +483,8 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.1.0",
     "cordova-plugin-splashscreen": "3.0.0",
     "cordova-plugin-statusbar": "2.0.0",
-    "cordova-plugin-vibration": "2.0.0"
+    "cordova-plugin-vibration": "2.0.0",
+    "com.oauthio.plugins.oauthio": "0.2.4"
 }
 // BOTTOM OF METADATA
 });

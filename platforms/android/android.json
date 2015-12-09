@@ -67,6 +67,10 @@
                         {
                             "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<access origin=\"https://oauth.io\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -178,6 +182,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "com.oauthio.plugins.oauthio": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
@@ -638,6 +645,14 @@
                 "navigator.notification",
                 "navigator"
             ]
+        },
+        {
+            "file": "plugins/com.oauthio.plugins.oauthio/www/dist/oauth.js",
+            "id": "com.oauthio.plugins.oauthio.OAuth",
+            "pluginId": "com.oauthio.plugins.oauthio",
+            "merges": [
+                "OAuth"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -656,6 +671,7 @@
         "cordova-plugin-network-information": "1.1.0",
         "cordova-plugin-splashscreen": "3.0.0",
         "cordova-plugin-statusbar": "2.0.0",
-        "cordova-plugin-vibration": "2.0.0"
+        "cordova-plugin-vibration": "2.0.0",
+        "com.oauthio.plugins.oauthio": "0.2.4"
     }
 }

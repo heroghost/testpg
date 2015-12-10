@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="content-security-policy" content="" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<title>拼图游戏</title>
+		<style type="text/css">
+		.line {
+			display:none;
+			z-index:1;
+			left:0;
+			top:0;
+			position:absolute;
+		}
+		#line1 {
+			display:block;
+		}
+		.container {
+			position:relative;
+			width:564px;
+			height:294px;
+			overflow:hidden;
+		}
+		.border {
+			border:5px solid #000;
+		}
+		.corner {
+			position:absolute;
+			width:282px;
+			height:147px;
+			background:#ccc;
+			overflow:hidden;
+		}
+		.leftTop,.inLeftTop {
+			position:absolute;
+			left:0;
+			top:0;
+			right:auto;
+			bottom:auto;
+		}
+		.rightTop,.inRightTop {
+			position:absolute;
+			right:0;
+			top:0;
+			left:auto;
+			bottom:auto;
+		}
+		.rightBottom,.inRightBottom {
+			position:absolute;
+			right:0;
+			bottom:0;
+			top:auto;
+			left:auto;
+		}
+		.leftBottom,.inLeftBottom {
+			position:absolute;
+			left:0;
+			bottom:0;
+			top:auto;
+			right:auto;
+		}
+		</style>
+	</head>
+	<body>
+		<canvas id="puzzle" style="width:600px; height:400px;"></canvas>
+		<button id="begin">开始拼图</button>
+		<!--<div>
+			<ul>
+			</ul>
+		</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/lib/seajs/sea.js"></script>-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+        	var img = new Image();
+	    	var context;
+	    	var myCanvas;
+	    	var p1,p2,p3,p4,p5,p6,p7,p8,p9;
+	    	var pics = [];
+	    	var pois = [];
+	    	var selectedPic1=-1,selectedPic2=-1;
+	    	function poi(x,y, width, height) {
+	    		this.x = x;
+	    		this.y = y;
+	    		this.width = width;
+	    		this.height = height;
+	    	}
+	    	function SliPic(id, spic, tpic) {
+	    		this.id = id;
+	    		this.spic = spic;
+	    		this.tpic = tpic;
+	    	}
+	        document.addEventListener("deviceready",function(){
+		    	
+		        navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+				    destinationType: Camera.DestinationType.DATA_URL
+				});
+				
+	        }, false);
+    	
+		    $('#begin').click(function() {
+		    	pois.sort(function(){ return 0.5 - Math.random() });
+		    	for(var i in pois) {
+		    		pics[i].tpic = pois[i];
+		    	}
+		    	context.clearRect(0, 0, img.width, img.height);
+		    	selectedPic1=-1;
+		    	selectedPic2=-1;
+		        drawList(pics);
+		    });
+		    function drawList(pics) {
+		    	for(var i in pics) {
+		        	drawPic(pics[i]);
+		        }
+		    }
+			function onSuccess(imageData) {
+			    putImage2Canvas(imageData);
+			}
+			function judgeSelected(x,y, pics){
+				
+				for(var i in pics) {
+					
+					context.beginPath();
+					context.rect(pics[i].tpic.x, pics[i].tpic.y, pics[i].tpic.width, pics[i].tpic.height);
+					
+					if(context.isPointInPath(x, y)) {
+						alert(pics[i].id);
+						alert(i);
+						context.stroke();
+						if(selectedPic1 == -1) {
+							selectedPic1 = i;
+							break;
+						} else if(selectedPic2 == -1) {
+							selectedPic2 = i;
+							var temp = pics[selectedPic1].tpic;
+							pics[selectedPic1].tpic = pics[selectedPic2].tpic;
+							pics[selectedPic2].tpic = temp;							
+				
+							selectedPic1 = -1;
+							selectedPic2 = -1;
+							break;
+						}
+					}
+				}
+				context.clearRect(0, 0, img.width, img.height);
+				drawList(pics);
+				//for(var i in pics) {
+				//	var sel = pics[i].tpic;
+				//	if(x>=sel.x && y>=sel.y && x<=sel.x+sel.width && y<=sel.y+sel.height) {
+				//		//drawFrame(pics[i]);
+				//		if(selectedPic1 == -1) {
+				//			selectedPic1 = i;
+				//		} else if(selectedPic2 == -1) {
+				//			selectedPic2 = i;
+				//			var temp = pics[selectedPic1].tpic;
+				//			pics[selectedPic1].tpic = pics[selectedPic2].tpic;
+				//			pics[selectedPic2].tpic = temp;							
+				//
+				//			drawPic(pics[selectedPic1]);
+				//			drawPic(pics[selectedPic2]);
+				//			selectedPic1 = -1;
+				//			selectedPic2 = -1;
+				//		}
+				//	}
+				//}
+			}
+			
+			function drawFrame(pic) {
+				var paint = new Paint();
+				paint.setColor(Color.Blue);                    //设置画笔颜色  
+			    paint.setStrokeWidth(1.0);              //设置线宽  
+    alert(222);
+				context.drawLine(pic.tpic.x,pic.tpic.y,pic.tpic.x+pic.tpic.width,pic.tpic.y, paint);
+				context.drawLine(pic.tpic.x,pic.tpic.y,pic.tpic.x,pic.tpic.y+pic.tpic.height, paint);
+				context.drawLine(pic.tpic.x+pic.tpic.width,pic.tpic.y+pic.tpic.height,pic.tpic.x+pic.tpic.width,pic.tpic.y, paint);
+				context.drawLine(pic.tpic.x+pic.tpic.width,pic.tpic.y+pic.tpic.height,pic.tpic.x,pic.tpic.y+pic.tpic.height, paint);
+			}
+			
+			function drawPic(pic) {
+				context.drawImage(img, pic.tpic.x, pic.tpic.y, pic.tpic.width,pic.tpic.height, pic.spic.x, pic.spic.y, pic.spic.width,pic.spic.height);
+			}
+			
+			function onFail(message) {
+			    alert('Failed because: ' + message);
+			}
+	        function putImage2Canvas(imageData) {
+			    img.src = "data:image/jpeg;base64," + imageData;
+			    img.onload = function(){
+			    	myCanvas = document.getElementById('puzzle');
+			    	
+			        myCanvas.width = img.width;
+			        myCanvas.height = img.height;
+			        
+			        myCanvas.addEventListener('click',function(e){
+			        	var scaleX = img.width / 600.0;
+			        	var scaleY = img.height / 400.0;
+			        	judgeSelected(e.layerX*scaleX,e.layerY*scaleY, pics);
+			        },false);
+			        
+			        context = myCanvas.getContext('2d');
+			        context.drawImage(img, 0, 0);
+			        
+		    		p1 = new poi(0, 0, img.width/3.0,img.height/3.0);
+		    		p2 = new poi(img.width/3.0, 0, img.width/3.0,img.height/3.0);
+		    		p3 = new poi(img.width/3.0*2, 0, img.width/3.0,img.height/3.0);
+		    		p4 = new poi(0, img.height/3.0, img.width/3.0,img.height/3.0);
+		    		p5 = new poi(img.width/3.0, img.height/3.0, img.width/3.0,img.height/3.0);
+		    		p6 = new poi(img.width/3.0*2, img.height/3.0, img.width/3.0,img.height/3.0);
+		    		p7 = new poi(0, img.height/3.0*2, img.width/3.0,img.height/3.0);
+		    		p8 = new poi(img.width/3.0, img.height/3.0*2, img.width/3.0,img.height/3.0);
+		    		p9 = new poi(img.width/3.0*2, img.height/3.0*2, img.width/3.0,img.height/3.0);
+			        
+			        pics.push(new SliPic(1, p1,p1));
+			        pics.push(new SliPic(2, p2,p2));
+			        pics.push(new SliPic(3, p3,p3));
+			        pics.push(new SliPic(4, p4,p4));
+			        pics.push(new SliPic(5, p5,p5));
+			        pics.push(new SliPic(6, p6,p6));
+			        pics.push(new SliPic(7, p7,p7));
+			        pics.push(new SliPic(8, p8,p8));
+			        pics.push(new SliPic(9, p9,p9));
+			        
+			        pois.push(p1);
+			        pois.push(p2);
+			        pois.push(p3);
+			        pois.push(p4);
+			        pois.push(p5);
+			        pois.push(p6);
+			        pois.push(p7);
+			        pois.push(p8);
+			        pois.push(p9);
+			        //var imgdata = context.getImageData(0, 0, img.width, img.height);
+			        // 处理imgdata
+			    }
+			}
+		</script>
+	</body>
+</html>

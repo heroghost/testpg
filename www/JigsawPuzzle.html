@@ -66,8 +66,10 @@
 		</style>
 	</head>
 	<body>
-		<canvas id="puzzle" style="width:600px; height:400px;"></canvas>
-		<button id="begin">开始拼图</button>
+		<canvas id="puzzle" style="width:400px; height:600px;"></canvas>
+		<button id="begin">开始拼图</button><br />
+		<label id="message"></label><br />
+		<img id="img" src=""  />
 		<!--<div>
 			<ul>
 			</ul>
@@ -84,14 +86,17 @@
 	    	var pics = [];
 	    	var pois = [];
 	    	var selectedPic1=-1,selectedPic2=-1;
-	    	function poi(x,y, width, height) {
+	    	function poi(x,y, width, height, id) {
 	    		this.x = x;
 	    		this.y = y;
 	    		this.width = width;
 	    		this.height = height;
-	    	}
-	    	function SliPic(id, spic, tpic) {
 	    		this.id = id;
+	    		this.copy = function() {
+	    			return new poi(this.x, this.y, this.width, this.height, this.id);
+	    		}
+	    	}
+	    	function SliPic(spic, tpic) {
 	    		this.spic = spic;
 	    		this.tpic = tpic;
 	    	}
@@ -106,14 +111,14 @@
 		    $('#begin').click(function() {
 		    	pois.sort(function(){ return 0.5 - Math.random() });
 		    	for(var i in pois) {
-		    		pics[i].tpic = pois[i];
+		    		pics[i].spic = pois[i].copy();
 		    	}
 		    	context.clearRect(0, 0, img.width, img.height);
 		    	selectedPic1=-1;
 		    	selectedPic2=-1;
-		        drawList(pics);
+		        drawList();
 		    });
-		    function drawList(pics) {
+		    function drawList() {
 		    	for(var i in pics) {
 		        	drawPic(pics[i]);
 		        }
@@ -121,53 +126,29 @@
 			function onSuccess(imageData) {
 			    putImage2Canvas(imageData);
 			}
-			function judgeSelected(x,y, pics){
-				
+			function judgeSelected(x,y){
 				for(var i in pics) {
-					
 					context.beginPath();
 					context.rect(pics[i].tpic.x, pics[i].tpic.y, pics[i].tpic.width, pics[i].tpic.height);
-					
 					if(context.isPointInPath(x, y)) {
-						alert(pics[i].id);
-						alert(i);
 						context.stroke();
 						if(selectedPic1 == -1) {
 							selectedPic1 = i;
-							break;
-						} else if(selectedPic2 == -1) {
+							//break;
+						} else if(selectedPic2 == -1 && selectedPic1 != i) {
 							selectedPic2 = i;
-							var temp = pics[selectedPic1].tpic;
-							pics[selectedPic1].tpic = pics[selectedPic2].tpic;
-							pics[selectedPic2].tpic = temp;							
-				
+							var temp = pics[selectedPic1].spic.copy();
+							pics[selectedPic1].spic = pics[selectedPic2].spic.copy();
+							pics[selectedPic2].spic = temp;
+							
+				//$('#message').html(selectedPic1+'_'+selectedPic2+'_'+pics[selectedPic1].spic.id + '_' + pics[selectedPic2].spic.id + ':::' + pics[selectedPic1].spic.x+'_'+pics[selectedPic1].spic.y+'|||'+pics[selectedPic2].spic.x+'_'+pics[selectedPic2].spic.y);
 							selectedPic1 = -1;
 							selectedPic2 = -1;
-							break;
+							//break;
 						}
 					}
 				}
-				context.clearRect(0, 0, img.width, img.height);
-				drawList(pics);
-				//for(var i in pics) {
-				//	var sel = pics[i].tpic;
-				//	if(x>=sel.x && y>=sel.y && x<=sel.x+sel.width && y<=sel.y+sel.height) {
-				//		//drawFrame(pics[i]);
-				//		if(selectedPic1 == -1) {
-				//			selectedPic1 = i;
-				//		} else if(selectedPic2 == -1) {
-				//			selectedPic2 = i;
-				//			var temp = pics[selectedPic1].tpic;
-				//			pics[selectedPic1].tpic = pics[selectedPic2].tpic;
-				//			pics[selectedPic2].tpic = temp;							
-				//
-				//			drawPic(pics[selectedPic1]);
-				//			drawPic(pics[selectedPic2]);
-				//			selectedPic1 = -1;
-				//			selectedPic2 = -1;
-				//		}
-				//	}
-				//}
+				drawList();
 			}
 			
 			function drawFrame(pic) {
@@ -182,7 +163,7 @@
 			}
 			
 			function drawPic(pic) {
-				context.drawImage(img, pic.tpic.x, pic.tpic.y, pic.tpic.width,pic.tpic.height, pic.spic.x, pic.spic.y, pic.spic.width,pic.spic.height);
+				context.drawImage(img, pic.spic.x, pic.spic.y, pic.spic.width,pic.spic.height, pic.tpic.x, pic.tpic.y, pic.tpic.width,pic.tpic.height);
 			}
 			
 			function onFail(message) {
@@ -190,40 +171,46 @@
 			}
 	        function putImage2Canvas(imageData) {
 			    img.src = "data:image/jpeg;base64," + imageData;
+			    
+			    
 			    img.onload = function(){
 			    	myCanvas = document.getElementById('puzzle');
-			    	
+			    	var swidth = myCanvas.style.width;
+			    	var sheight = myCanvas.style.height;
+			    	swidth = swidth.substr(0, swidth.length - 2);
+			    	sheight = sheight.substr(0, sheight.length - 2);
 			        myCanvas.width = img.width;
 			        myCanvas.height = img.height;
 			        
 			        myCanvas.addEventListener('click',function(e){
-			        	var scaleX = img.width / 600.0;
-			        	var scaleY = img.height / 400.0;
-			        	judgeSelected(e.layerX*scaleX,e.layerY*scaleY, pics);
+			        	var scaleX = img.width / swidth;
+			        	var scaleY = img.height / sheight;
+			        	judgeSelected(e.layerX*scaleX,e.layerY*scaleY);
 			        },false);
 			        
 			        context = myCanvas.getContext('2d');
 			        context.drawImage(img, 0, 0);
+			        //context.rotate(90*Math.PI/180);
 			        
-		    		p1 = new poi(0, 0, img.width/3.0,img.height/3.0);
-		    		p2 = new poi(img.width/3.0, 0, img.width/3.0,img.height/3.0);
-		    		p3 = new poi(img.width/3.0*2, 0, img.width/3.0,img.height/3.0);
-		    		p4 = new poi(0, img.height/3.0, img.width/3.0,img.height/3.0);
-		    		p5 = new poi(img.width/3.0, img.height/3.0, img.width/3.0,img.height/3.0);
-		    		p6 = new poi(img.width/3.0*2, img.height/3.0, img.width/3.0,img.height/3.0);
-		    		p7 = new poi(0, img.height/3.0*2, img.width/3.0,img.height/3.0);
-		    		p8 = new poi(img.width/3.0, img.height/3.0*2, img.width/3.0,img.height/3.0);
-		    		p9 = new poi(img.width/3.0*2, img.height/3.0*2, img.width/3.0,img.height/3.0);
+		    		p1 = new poi(0, 0, img.width/3.0,img.height/3.0,1);
+		    		p2 = new poi(img.width/3.0, 0, img.width/3.0,img.height/3.0,2);
+		    		p3 = new poi(img.width/3.0*2, 0, img.width/3.0,img.height/3.0,3);
+		    		p4 = new poi(0, img.height/3.0, img.width/3.0,img.height/3.0,4);
+		    		p5 = new poi(img.width/3.0, img.height/3.0, img.width/3.0,img.height/3.0,5);
+		    		p6 = new poi(img.width/3.0*2, img.height/3.0, img.width/3.0,img.height/3.0,6);
+		    		p7 = new poi(0, img.height/3.0*2, img.width/3.0,img.height/3.0,7);
+		    		p8 = new poi(img.width/3.0, img.height/3.0*2, img.width/3.0,img.height/3.0,8);
+		    		p9 = new poi(img.width/3.0*2, img.height/3.0*2, img.width/3.0,img.height/3.0,9);
 			        
-			        pics.push(new SliPic(1, p1,p1));
-			        pics.push(new SliPic(2, p2,p2));
-			        pics.push(new SliPic(3, p3,p3));
-			        pics.push(new SliPic(4, p4,p4));
-			        pics.push(new SliPic(5, p5,p5));
-			        pics.push(new SliPic(6, p6,p6));
-			        pics.push(new SliPic(7, p7,p7));
-			        pics.push(new SliPic(8, p8,p8));
-			        pics.push(new SliPic(9, p9,p9));
+			        pics.push(new SliPic(p1,p1.copy()));
+			        pics.push(new SliPic(p2,p2.copy()));
+			        pics.push(new SliPic(p3,p3.copy()));
+			        pics.push(new SliPic(p4,p4.copy()));
+			        pics.push(new SliPic(p5,p5.copy()));
+			        pics.push(new SliPic(p6,p6.copy()));
+			        pics.push(new SliPic(p7,p7.copy()));
+			        pics.push(new SliPic(p8,p8.copy()));
+			        pics.push(new SliPic(p9,p9.copy()));
 			        
 			        pois.push(p1);
 			        pois.push(p2);

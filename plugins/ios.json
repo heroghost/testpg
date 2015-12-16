@@ -1,0 +1,63 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "com.oauthio.plugins.oauthio": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        }
+    },
+    "dependent_plugins": {}
+}

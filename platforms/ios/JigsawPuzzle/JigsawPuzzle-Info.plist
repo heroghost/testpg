@@ -6,6 +6,11 @@
     <dict>
       <key>NSAllowsArbitraryLoads</key>
       <true/>
+      <key>NSExceptionDomains</key>
+      <dict>
+        <key>oauth.io</key>
+        <dict/>
+      </dict>
     </dict>
     <key>CFBundleDevelopmentRegion</key>
     <string>English</string>

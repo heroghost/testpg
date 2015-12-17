@@ -66,8 +66,10 @@
 		</style>
 	</head>
 	<body>
-		<canvas id="puzzle" style="width:400px; height:600px;"></canvas>
-		<button id="begin">开始拼图</button><br />
+		<canvas id="puzzle" style="width:400px; height:600px;"></canvas><br />
+		<button id="begin">开始拼图</button>
+		<span style="width:50px;"></span>
+		<button id="camera">重新拍照</button><br />
 		<label id="message"></label><br />
 		<img id="img" src=""  />
 		<!--<div>
@@ -86,6 +88,9 @@
 	    	var pics = [];
 	    	var pois = [];
 	    	var selectedPic1=-1,selectedPic2=-1;
+	    	var hasRegisted = false;
+	    	var hasBroken = false;
+	    	
 	    	function poi(x,y, width, height, id) {
 	    		this.x = x;
 	    		this.y = y;
@@ -118,7 +123,21 @@
 		    	context.clearRect(0, 0, img.width, img.height);
 		    	selectedPic1=-1;
 		    	selectedPic2=-1;
+		    	hasBroken = true;
 		        drawList();
+		    });
+		    $('#camera').click(function() {
+	    	    pics = [];
+	    	    pois = [];
+	    	    selectedPic1=-1;
+	    	    selectedPic2=-1;
+	    	    context.clearRect(0, 0, img.width, img.height);
+	    	    hasBroken = false;
+		    	navigator.camera.getPicture(onSuccess, onFail, { 
+		        	quality: 50,
+				    destinationType: Camera.DestinationType.DATA_URL,
+				    correctOrientation: true,
+				});
 		    });
 		    function drawList() {
 		    	for(var i in pics) {
@@ -158,8 +177,9 @@
 						}
 					}
 				}
-				if(judgeFinished()) {
-					navigator.vibrate(3000);
+				
+				if(hasBroken && judgeFinished()) {
+					navigator.vibrate(1000);
 					navigator.notification.alert("恭喜您完成了拼图", 
 					function(){},
 					"游戏完成提示");
@@ -168,14 +188,13 @@
 			}
 			
 			function judgeFinished() {
-				var s='';
 				for(var i in pics) {
-					s+=pics[i].spic.id;
-					if(pics[i].spic.id != i+1) {
+					var id = parseInt(pics[i].spic.id);
+					var index = parseInt(i)+1;
+					if(id != index) {
 						return false;
 					}
 				}
-				$('#message').html(s);
 				return true;
 			}
 			
@@ -217,12 +236,16 @@
 			        if (ua.match(/Android/i) == "android")  {
 			        	eventName = 'mousedown';
 			        }
-			        myCanvas.addEventListener(eventName, function(e){
-			        	var scaleX = img.width / swidth;
-			        	var scaleY = img.height / sheight;
-			        	
-			        	judgeSelected(e.layerX*scaleX,e.layerY*scaleY);
-			        },false);
+			        
+			        if(!hasRegisted) {
+				        myCanvas.addEventListener(eventName, function(e){
+				        	var scaleX = img.width / swidth;
+				        	var scaleY = img.height / sheight;
+				        	hasRegisted = true;
+				        	
+				        	judgeSelected(e.layerX*scaleX,e.layerY*scaleY);
+				        },false);
+			        }
 			        
 			        context = myCanvas.getContext('2d');
 			        context.drawImage(img, 0, 0);

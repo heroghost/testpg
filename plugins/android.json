@@ -57,6 +57,12 @@
         },
         "com.oauthio.plugins.oauthio": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "com.manateeworks.barcodescanner": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
         }
     },
     "dependent_plugins": {}

@@ -51,7 +51,13 @@
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
     <access origin="https://oauth.io" />
+    <feature name="MWBarcodeScanner">
+        <param name="android-package" value="com.manateeworks.BarcodeScannerPlugin" />
+    </feature>
     <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
     <allow-intent href="market:*" />
     <name>JigsawPuzzle</name>
     <description>
@@ -95,6 +101,8 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="org.apache.cordova.whitelist" />
+    <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />

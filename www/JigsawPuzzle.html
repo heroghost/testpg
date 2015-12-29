@@ -105,13 +105,32 @@
 	    		this.spic = spic;
 	    		this.tpic = tpic;
 	    	}
-	        document.addEventListener("deviceready",function(){
-		    	
-		        navigator.camera.getPicture(onSuccess, onFail, { 
-		        	quality: 50,
-				    destinationType: Camera.DestinationType.DATA_URL,
-				    correctOrientation: true,
-				});
+	        document.addEventListener("deviceready",function(){alert(1);
+	        	alert(cordova.plugins);
+	        	cordova.plugins.barcodeScanner.scan(
+			      function (result) {
+			          alert("We got a barcode\n" +
+			                "Result: " + result.text + "\n" +
+			                "Format: " + result.format + "\n" +
+			                "Cancelled: " + result.cancelled);
+			      }, 
+			      function (error) {
+			          alert("Scanning failed: " + error);
+			      }
+			   );
+	        	alert(2);
+		    	var s = '';
+		    	for(var i in cordova.define.moduleMap) {
+		    		s += i;
+		    		s += "\n";
+		    	}
+		    	alert(s);
+		    	alert(111);
+		        //avigator.camera.getPicture(onSuccess, onFail, { 
+		        //	quality: 50,
+				//    destinationType: Camera.DestinationType.DATA_URL,
+				//    correctOrientation: true,
+				//});
 				
 	        }, false);
     	

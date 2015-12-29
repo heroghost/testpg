@@ -135,5 +135,22 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "com.manateeworks.barcodescanner": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/manateeworks/phonegap-mwbarcodescanner.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "phonegap-plugin-barcodescanner": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-barcodescanner"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

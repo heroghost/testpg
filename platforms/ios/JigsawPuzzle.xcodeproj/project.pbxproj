@@ -71,6 +71,26 @@
 		1B9D8F49325747AD9BDA1571 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F04BAD9A842EC9C414EE3 /* CDVViewController+SplashScreen.m */; };
 		7D379E331698485A835C4A65 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3DB208671D4FC69CF898B1 /* CDVStatusBar.m */; };
 		BEEB28B8022E4A5A960F295E /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F8B5187E604DC6AE0156BB /* CDVVibration.m */; };
+		EB7BE1BC78C74B1AB9E378E1 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CEF66182404409F95F2A2CA /* libiconv.dylib */; };
+		DDC8A9A5D49E49C6A32AD39F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96EF4CC8B2241B98E146499 /* CoreVideo.framework */; };
+		615CC3ED82614AF9824D940A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEED8D553ED46A6872C8218 /* QuartzCore.framework */; };
+		9C0FFA859711480FBA18CC90 /* CDVMWBarcodeScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F0A1F71D4405B60BEA09 /* CDVMWBarcodeScanner.m */; };
+		231E9ECD36524E1C81649662 /* MWScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6CBB53FE87341EC8B68F5B1 /* MWScannerViewController.m */; };
+		6E313E1536304E36B716403C /* MWOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = B951C0E27D0A4044BE480FD9 /* MWOverlay.m */; };
+		8F3DA370E55443FF97036761 /* MWResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 373887D07F9E40B2A7D58069 /* MWResult.m */; };
+		4995D7F85E80471394AFC73A /* MWScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C96FE3584E1146ED84F4D9C5 /* MWScannerViewController.xib */; };
+		00FD34807D7440B79FC5A6C9 /* libBarcodeScanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CD2A3B40A74435AABF11CC /* libBarcodeScanner.a */; };
+		23B75AE1FCCB425BA7E3FD64 /* close_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F90FDF8E304824BB98A8AC /* close_button.png */; };
+		FC54E9449557415EA2DB7675 /* flashbuttonon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A619B4FFAD64142BFC440FF /* flashbuttonon.png */; };
+		6D6F6CA7D1D742F1AF433591 /* flashbuttonoff.png in Resources */ = {isa = PBXBuildFile; fileRef = 65ED6FDD392748949793610E /* flashbuttonoff.png */; };
+		DD79034F1CB548AEB52FF48B /* overlay_mw.png in Resources */ = {isa = PBXBuildFile; fileRef = D6341FD6680F45A2A7B2CF60 /* overlay_mw.png */; };
+		305B9BA8AF5B4AA2AF1BA1B5 /* overlay_mw@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F608406BFC24298B14EB855 /* overlay_mw@2x.png */; };
+		9E970D305C48466E966842EA /* zoom.png in Resources */ = {isa = PBXBuildFile; fileRef = D6BCC220119C4D7FB0D57537 /* zoom.png */; };
+		EDB0966A3CF843F48A11E0E6 /* CDVBarcodeScanner.mm in Resources */ = {isa = PBXBuildFile; fileRef = 1F05A4ACBB2C455F91FAF7BA /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		21A0AFBC95BF46A687358CAB /* zxing-all-in-one.cpp in Resources */ = {isa = PBXBuildFile; fileRef = C0E94EA36785436CAEA9B7DC /* zxing-all-in-one.cpp */; };
+		0F9141684AF745F5B0D43114 /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 702DA6DBC12C42CC84365744 /* scannerOverlay.xib */; };
+		6A3F97EE971E4ACBB6E4A1F8 /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0DBC33FB56924583B0F53608 /* CDVBarcodeScanner.bundle */; };
+		52985206718544EF8E0911F0 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329468598B824970BB69925A /* CoreImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +211,32 @@
 		3FF88EC978B74A9B80CC592E /* CDVStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		55F8B5187E604DC6AE0156BB /* CDVVibration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVVibration.m"; path = "cordova-plugin-vibration/CDVVibration.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		9F47AC081F954B73A9DD1935 /* CDVVibration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVVibration.h"; path = "cordova-plugin-vibration/CDVVibration.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		2CEF66182404409F95F2A2CA /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libiconv.dylib"; path = "usr/lib/libiconv.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		C96EF4CC8B2241B98E146499 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreVideo.framework"; path = "System/Library/Frameworks/CoreVideo.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		AAEED8D553ED46A6872C8218 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		B137F0A1F71D4405B60BEA09 /* CDVMWBarcodeScanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVMWBarcodeScanner.m"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/CDVMWBarcodeScanner.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		F6CBB53FE87341EC8B68F5B1 /* MWScannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MWScannerViewController.m"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWScannerViewController.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		B951C0E27D0A4044BE480FD9 /* MWOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MWOverlay.m"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWOverlay.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		373887D07F9E40B2A7D58069 /* MWResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "MWResult.m"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWResult.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		C96FE3584E1146ED84F4D9C5 /* MWScannerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MWScannerViewController.xib"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWScannerViewController.xib"; sourceTree = "<group>"; fileEncoding = 4; };
+		11CD2A3B40A74435AABF11CC /* libBarcodeScanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libBarcodeScanner.a"; path = "JigsawPuzzle/Plugins/com.manateeworks.barcodescanner/MWBarcodeScanner/libBarcodeScanner.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		DEB4D745B62E4FF3BD8288A7 /* CDVMWBarcodeScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVMWBarcodeScanner.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/CDVMWBarcodeScanner.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		34DEB9EC337D45928EC64227 /* BarcodeScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BarcodeScanner.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/BarcodeScanner.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		A43BFE9C3A4D4E5D91A6F577 /* MWScannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MWScannerViewController.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWScannerViewController.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		488BA8691D1A4DFD92B85C14 /* MWOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MWOverlay.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWOverlay.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		93F190C8957540BEAE2A943C /* MWResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MWResult.h"; path = "com.manateeworks.barcodescanner/MWBarcodeScanner/MWResult.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C0F90FDF8E304824BB98A8AC /* close_button.png */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "close_button.png"; path = "close_button.png"; sourceTree = "<group>"; fileEncoding = 4; };
+		1A619B4FFAD64142BFC440FF /* flashbuttonon.png */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "flashbuttonon.png"; path = "flashbuttonon.png"; sourceTree = "<group>"; fileEncoding = 4; };
+		65ED6FDD392748949793610E /* flashbuttonoff.png */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "flashbuttonoff.png"; path = "flashbuttonoff.png"; sourceTree = "<group>"; fileEncoding = 4; };
+		D6341FD6680F45A2A7B2CF60 /* overlay_mw.png */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "overlay_mw.png"; path = "overlay_mw.png"; sourceTree = "<group>"; fileEncoding = 4; };
+		4F608406BFC24298B14EB855 /* overlay_mw@2x.png */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "overlay_mw@2x.png"; path = "overlay_mw@2x.png"; sourceTree = "<group>"; fileEncoding = 4; };
+		D6BCC220119C4D7FB0D57537 /* zoom.png */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "zoom.png"; path = "zoom.png"; sourceTree = "<group>"; fileEncoding = 4; };
+		1F05A4ACBB2C455F91FAF7BA /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "CDVBarcodeScanner.mm"; path = "phonegap-plugin-barcodescanner/CDVBarcodeScanner.mm"; sourceTree = "<group>"; fileEncoding = 4; };
+		C0E94EA36785436CAEA9B7DC /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "zxing-all-in-one.cpp"; path = "phonegap-plugin-barcodescanner/zxing-all-in-one.cpp"; sourceTree = "<group>"; fileEncoding = 4; };
+		DF99B8844CD647F39FE55CF6 /* zxing-all-in-one.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "zxing-all-in-one.h"; path = "phonegap-plugin-barcodescanner/zxing-all-in-one.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		702DA6DBC12C42CC84365744 /* scannerOverlay.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "scannerOverlay.xib"; path = "scannerOverlay.xib"; sourceTree = "<group>"; fileEncoding = 4; };
+		0DBC33FB56924583B0F53608 /* CDVBarcodeScanner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVBarcodeScanner.bundle"; path = "CDVBarcodeScanner.bundle"; sourceTree = "<group>"; };
+		329468598B824970BB69925A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreImage.framework"; path = "System/Library/Frameworks/CoreImage.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +256,11 @@
 				559BA98CE21D47528EDE33F9 /* CoreMotion.framework in Frameworks */,
 				96E35707F5CF4C0EB7D2FE77 /* AudioToolbox.framework in Frameworks */,
 				9240B0716C1A46BFB0FF5880 /* SystemConfiguration.framework in Frameworks */,
+				EB7BE1BC78C74B1AB9E378E1 /* libiconv.dylib in Frameworks */,
+				DDC8A9A5D49E49C6A32AD39F /* CoreVideo.framework in Frameworks */,
+				615CC3ED82614AF9824D940A /* QuartzCore.framework in Frameworks */,
+				00FD34807D7440B79FC5A6C9 /* libBarcodeScanner.a in Frameworks */,
+				52985206718544EF8E0911F0 /* CoreImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +324,14 @@
 				8D1107310486CEB800E47090 /* JigsawPuzzle-Info.plist */,
 				3FFEB416CC1242A08C84AD0B /* CDVNotification.bundle */,
 				A33B0C0272FC46039F4AAAF4 /* CDVCapture.bundle */,
+				C0F90FDF8E304824BB98A8AC /* close_button.png */,
+				1A619B4FFAD64142BFC440FF /* flashbuttonon.png */,
+				65ED6FDD392748949793610E /* flashbuttonoff.png */,
+				D6341FD6680F45A2A7B2CF60 /* overlay_mw.png */,
+				4F608406BFC24298B14EB855 /* overlay_mw@2x.png */,
+				D6BCC220119C4D7FB0D57537 /* zoom.png */,
+				702DA6DBC12C42CC84365744 /* scannerOverlay.xib */,
+				0DBC33FB56924583B0F53608 /* CDVBarcodeScanner.bundle */,
 			);
 			name = Resources;
 			path = "JigsawPuzzle/Resources";
@@ -292,6 +351,11 @@
 				66E6D97B511F452795D283A5 /* CoreMotion.framework */,
 				EC6947F94E9E4D9C95C9ADFE /* AudioToolbox.framework */,
 				77417B50743444CABA8D0E01 /* SystemConfiguration.framework */,
+				2CEF66182404409F95F2A2CA /* libiconv.dylib */,
+				C96EF4CC8B2241B98E146499 /* CoreVideo.framework */,
+				AAEED8D553ED46A6872C8218 /* QuartzCore.framework */,
+				11CD2A3B40A74435AABF11CC /* libBarcodeScanner.a */,
+				329468598B824970BB69925A /* CoreImage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -352,6 +416,19 @@
 				3FF88EC978B74A9B80CC592E /* CDVStatusBar.h */,
 				55F8B5187E604DC6AE0156BB /* CDVVibration.m */,
 				9F47AC081F954B73A9DD1935 /* CDVVibration.h */,
+				B137F0A1F71D4405B60BEA09 /* CDVMWBarcodeScanner.m */,
+				F6CBB53FE87341EC8B68F5B1 /* MWScannerViewController.m */,
+				B951C0E27D0A4044BE480FD9 /* MWOverlay.m */,
+				373887D07F9E40B2A7D58069 /* MWResult.m */,
+				C96FE3584E1146ED84F4D9C5 /* MWScannerViewController.xib */,
+				DEB4D745B62E4FF3BD8288A7 /* CDVMWBarcodeScanner.h */,
+				34DEB9EC337D45928EC64227 /* BarcodeScanner.h */,
+				A43BFE9C3A4D4E5D91A6F577 /* MWScannerViewController.h */,
+				488BA8691D1A4DFD92B85C14 /* MWOverlay.h */,
+				93F190C8957540BEAE2A943C /* MWResult.h */,
+				1F05A4ACBB2C455F91FAF7BA /* CDVBarcodeScanner.mm */,
+				C0E94EA36785436CAEA9B7DC /* zxing-all-in-one.cpp */,
+				DF99B8844CD647F39FE55CF6 /* zxing-all-in-one.h */,
 			);
 			name = Plugins;
 			path = "JigsawPuzzle/Plugins";
@@ -507,6 +584,14 @@
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
 				1C5B3788AF9D47B9B7FF193F /* CDVNotification.bundle in Resources */,
 				FAA4932F02A24BB1854ED3E6 /* CDVCapture.bundle in Resources */,
+				23B75AE1FCCB425BA7E3FD64 /* close_button.png in Resources */,
+				FC54E9449557415EA2DB7675 /* flashbuttonon.png in Resources */,
+				6D6F6CA7D1D742F1AF433591 /* flashbuttonoff.png in Resources */,
+				DD79034F1CB548AEB52FF48B /* overlay_mw.png in Resources */,
+				305B9BA8AF5B4AA2AF1BA1B5 /* overlay_mw@2x.png in Resources */,
+				9E970D305C48466E966842EA /* zoom.png in Resources */,
+				0F9141684AF745F5B0D43114 /* scannerOverlay.xib in Resources */,
+				6A3F97EE971E4ACBB6E4A1F8 /* CDVBarcodeScanner.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +645,13 @@
 				1B9D8F49325747AD9BDA1571 /* CDVViewController+SplashScreen.m in Sources */,
 				7D379E331698485A835C4A65 /* CDVStatusBar.m in Sources */,
 				BEEB28B8022E4A5A960F295E /* CDVVibration.m in Sources */,
+				9C0FFA859711480FBA18CC90 /* CDVMWBarcodeScanner.m in Sources */,
+				231E9ECD36524E1C81649662 /* MWScannerViewController.m in Sources */,
+				6E313E1536304E36B716403C /* MWOverlay.m in Sources */,
+				8F3DA370E55443FF97036761 /* MWResult.m in Sources */,
+				4995D7F85E80471394AFC73A /* MWScannerViewController.xib in Resources */,
+				EDB0966A3CF843F48A11E0E6 /* CDVBarcodeScanner.mm in Resources */,
+				21A0AFBC95BF46A687358CAB /* zxing-all-in-one.cpp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +694,10 @@
 				);
 				PRODUCT_NAME = "JigsawPuzzle";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/JigsawPuzzle/Plugins/com.manateeworks.barcodescanner/MWBarcodeScanner\"",
+				);
 			};
 			name = Debug;
 		};
@@ -631,6 +727,10 @@
 				);
 				PRODUCT_NAME = "JigsawPuzzle";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/JigsawPuzzle/Plugins/com.manateeworks.barcodescanner/MWBarcodeScanner\"",
+				);
 			};
 			name = Release;
 		};

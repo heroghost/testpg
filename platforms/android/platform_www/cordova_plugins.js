@@ -463,6 +463,22 @@ module.exports = [
         "merges": [
             "OAuth"
         ]
+    },
+    {
+        "file": "plugins/com.manateeworks.barcodescanner/www/MWBScanner.js",
+        "id": "com.manateeworks.barcodescanner.Scanner",
+        "pluginId": "com.manateeworks.barcodescanner",
+        "clobbers": [
+            "scanner"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -484,7 +500,9 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "3.0.0",
     "cordova-plugin-statusbar": "2.0.0",
     "cordova-plugin-vibration": "2.0.0",
-    "com.oauthio.plugins.oauthio": "0.2.4"
+    "com.oauthio.plugins.oauthio": "0.2.4",
+    "com.manateeworks.barcodescanner": "1.8.1",
+    "phonegap-plugin-barcodescanner": "4.1.0"
 }
 // BOTTOM OF METADATA
 });

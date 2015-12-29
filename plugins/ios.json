@@ -57,6 +57,12 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "com.manateeworks.barcodescanner": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.dhp.jigsawpuzzle"
         }
     },
     "dependent_plugins": {}

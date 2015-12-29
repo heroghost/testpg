@@ -105,13 +105,23 @@
 	    		this.spic = spic;
 	    		this.tpic = tpic;
 	    	}
-	        document.addEventListener("deviceready",function(){
-		    	
-		        navigator.camera.getPicture(onSuccess, onFail, { 
-		        	quality: 50,
-				    destinationType: Camera.DestinationType.DATA_URL,
-				    correctOrientation: true,
-				});
+	        document.addEventListener("deviceready",function(){alert(1);
+	        	cordova.require('com.manateeworks.barcodescanner.scanner');
+	        	
+	        	alert(2);
+	        	alert(scanner);
+		    	var s = '';
+		    	for(var i in cordova.define.moduleMap) {
+		    		s += i;
+		    		s += "\n";
+		    	}
+		    	alert(s);
+		    	alert(111);
+		        //avigator.camera.getPicture(onSuccess, onFail, { 
+		        //	quality: 50,
+				//    destinationType: Camera.DestinationType.DATA_URL,
+				//    correctOrientation: true,
+				//});
 				
 	        }, false);
     	
